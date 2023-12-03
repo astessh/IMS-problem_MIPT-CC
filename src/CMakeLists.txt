@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.8)
+project(runner)
+set(CMAKE_CXX_STANDARD 20)
+include_directories(${PROJECT_SOURCE_DIR}/ims)
+include_directories(${PROJECT_SOURCE_DIR}/runners)
+
+add_executable(runner ${PROJECT_SOURCE_DIR}/runners/runner.cpp)
+add_library(IMS STATIC ${PROJECT_SOURCE_DIR}/ims/ims.hpp)
+set_target_properties(IMS PROPERTIES LINKER_LANGUAGE CXX)
+add_library(machine STATIC ${PROJECT_SOURCE_DIR}/ims/machine.hpp)
+set_target_properties(machine PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries(runner IMS machine)
