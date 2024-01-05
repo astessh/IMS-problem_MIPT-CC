@@ -115,7 +115,7 @@ void Test2(std::ofstream& out) {
 }
 
 void Test3(std::ofstream& out) {
-  out << "jobs count,machines count,appr result,accur result,status,jobs..."
+  out << "jobs count,machines count,appr result,accur result,status,job 1,job 2,job 3,job 4,job 5,job 6,job 7,job 8,job 9,job 10,job 11,job 12"
       << std::endl;
   const uint32_t kNumberOfTests = 100;
   const uint32_t kMaxTime = 100;
