@@ -43,9 +43,12 @@ std::ostream& operator<<(std::ostream& out,
   bool success = k_test.appr_result <=
                  double(k_test.accur_result) *
                      (4.0 / 3.0 - 1.0 / (3.0 * double(k_test.machines_count)));
-  out << success ? "OK" : "NOT OK";
+  out << success;
   for (uint32_t job : k_test.jobs) {
     out << ',' << job;
+  } 
+  for (uint32_t filler = 0; filler < 12 - k_test.jobs_count; ++filler) {
+    out << ",-";
   }
   out << '\n';
   return out;
@@ -130,13 +133,13 @@ void Test3(std::ofstream& out) {
 
 int main() {
   std::ofstream out;
-  out.open("../results/test_time_2_machines.csv");
+  out.open("/results/test_time_2_machines.csv");
   Test1(out);
   out.close();
-  out.open("../results/test_time_3_machines.csv");
+  out.open("/results/test_time_3_machines.csv");
   Test2(out);
   out.close();
-  out.open("../results/test_approximation.csv");
+  out.open("/results/test_approximation.csv");
   Test3(out);
   out.close();
   return 0;
